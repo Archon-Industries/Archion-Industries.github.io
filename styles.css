@@ -74,10 +74,48 @@ body {
     height: auto;
     border-radius: 8px;
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .screenshot:hover {
     transform: scale(1.02);
+}
+
+/* Lightbox styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.close-button:hover {
+    color: #4a90e2;
 }
 
 .store-links {
