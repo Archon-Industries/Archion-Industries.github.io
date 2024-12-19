@@ -23,9 +23,9 @@
             
             <div class="screenshots">
                 <div class="screenshots-grid">
-                    <img src="images/screenshot2.png" alt="Crestfall Screenshot 2" class="screenshot">
-                    <img src="images/screenshot3.png" alt="Crestfall Screenshot 3" class="screenshot">
-                    <img src="images/screenshot4.png" alt="Crestfall Screenshot 4" class="screenshot">
+                    <img src="images/screenshot2.png" alt="Crestfall Screenshot 2" class="screenshot" onclick="openLightbox(this)">
+                    <img src="images/screenshot3.png" alt="Crestfall Screenshot 3" class="screenshot" onclick="openLightbox(this)">
+                    <img src="images/screenshot4.png" alt="Crestfall Screenshot 4" class="screenshot" onclick="openLightbox(this)">
                 </div>
             </div>
 
@@ -48,5 +48,40 @@
             </div>
         </div>
     </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-button" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="Lightbox image">
+    </div>
+
+    <script>
+        function openLightbox(imgElement) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imgElement.src;
+            lightboxImg.alt = imgElement.alt;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox when pressing Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // Prevent closing when clicking on the image itself
+        document.getElementById('lightbox-img').onclick = function(e) {
+            e.stopPropagation();
+        };
+    </script>
 </body>
 </html>
